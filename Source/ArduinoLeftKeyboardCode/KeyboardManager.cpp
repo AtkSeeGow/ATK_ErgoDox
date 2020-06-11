@@ -95,6 +95,10 @@ void KeyboardManager::OperationState(int8_t rowPin, int8_t columnPin, bool curre
     keyboardButton->LastChangeStateTime = now;
     keyboardButton->CurrentState = currentState;
     this->DisplayMappingModeName();
+
+    if (keyboardButton->KeyType == FunctionType && keyboardButton->CurrentState == HIGH)
+      for (int8_t i = 0; i < 53; i++)
+        this->keyboardButtons[i].CurrentState = HIGH;
   }
 }
 

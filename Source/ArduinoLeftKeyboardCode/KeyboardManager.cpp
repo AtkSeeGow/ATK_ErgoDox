@@ -142,194 +142,306 @@ void KeyboardManager::DisplayMappingModeName() {
 
 KeyboardButton *KeyboardManager::getBasicMapping(int8_t rowPin, int8_t columnPin)
 {
-  // 1
-  if (rowPin == 21 && columnPin == 4)
-    return &this->keyboardButtons[0]; //
-  else if (rowPin == 21 && columnPin == 5)
-    return &this->keyboardButtons[1]; // TAB
-  else if (rowPin == 21 && columnPin == 6)
-    return &this->keyboardButtons[2]; // CAPS_LOCK
-  else if (rowPin == 21 && columnPin == 7)
-    return &this->keyboardButtons[3]; // SHIFT
-  else if (rowPin == 21 && columnPin == 8)
-    return &this->keyboardButtons[4]; // GUI
-
-  // 2
-  if (rowPin == 20 && columnPin == 4)
-    return &this->keyboardButtons[5]; // 1
-  else if (rowPin == 20 && columnPin == 5)
-    return &this->keyboardButtons[6]; // Q
-  else if (rowPin == 20 && columnPin == 6)
-    return &this->keyboardButtons[7]; // A
-  else if (rowPin == 20 && columnPin == 7)
-    return &this->keyboardButtons[8]; // Z
-  else if (rowPin == 20 && columnPin == 8)
-    return &this->keyboardButtons[9]; // F1
-
-  // 3
-  if (rowPin == 19 && columnPin == 4)
-    return &this->keyboardButtons[10]; // 2
-  else if (rowPin == 19 && columnPin == 5)
-    return &this->keyboardButtons[11]; // W
-  else if (rowPin == 19 && columnPin == 6)
-    return &this->keyboardButtons[12]; // S
-  else if (rowPin == 19 && columnPin == 7)
-    return &this->keyboardButtons[13]; // X
-  else if (rowPin == 19 && columnPin == 8)
-    return &this->keyboardButtons[14]; // F2
-
-  // 4
-  if (rowPin == 18 && columnPin == 4)
-    return &this->keyboardButtons[15]; // 3
-  else if (rowPin == 18 && columnPin == 5)
-    return &this->keyboardButtons[16]; // E
-  else if (rowPin == 18 && columnPin == 6)
-    return &this->keyboardButtons[17]; // D
-  else if (rowPin == 18 && columnPin == 7)
-    return &this->keyboardButtons[18]; // C
-  else if (rowPin == 18 && columnPin == 8)
-    return &this->keyboardButtons[19]; // F3
-
-  // 5
-  if (rowPin == 15 && columnPin == 4)
-    return &this->keyboardButtons[20]; // 4
-  else if (rowPin == 15 && columnPin == 5)
-    return &this->keyboardButtons[21]; // R
-  else if (rowPin == 15 && columnPin == 6)
-    return &this->keyboardButtons[22]; // F
-  else if (rowPin == 15 && columnPin == 7)
-    return &this->keyboardButtons[23]; // V
-  else if (rowPin == 15 && columnPin == 8)
-    return &this->keyboardButtons[24]; // F4
-
-  // 6
-  if (rowPin == 14 && columnPin == 4)
-    return &this->keyboardButtons[25]; // 5
-  else if (rowPin == 14 && columnPin == 5)
-    return &this->keyboardButtons[26]; // T
-  else if (rowPin == 14 && columnPin == 6)
-    return &this->keyboardButtons[27]; // G
-  else if (rowPin == 14 && columnPin == 7)
-    return &this->keyboardButtons[28]; // B
-
-  // 7
-  if (rowPin == 16 && columnPin == 4)
-    return &this->keyboardButtons[29]; // ESC
-  else if (rowPin == 16 && columnPin == 5)
-    return &this->keyboardButtons[30]; // F6
-  else if (rowPin == 16 && columnPin == 6)
-    return &this->keyboardButtons[31]; // F5
-
-  // 8
-  if (rowPin == 14 && columnPin == 8)
-    return &this->keyboardButtons[32]; // ' '
-  else if (rowPin == 16 && columnPin == 8)
-    return &this->keyboardButtons[33]; // CTRL
-  else if (rowPin == 10 && columnPin == 6)
-    return &this->keyboardButtons[34]; // FN1
-  else if (rowPin == 10 && columnPin == 8)
-    return &this->keyboardButtons[35];
-  else if (rowPin == 10 && columnPin == 7)
-    return &this->keyboardButtons[36];
-  else if (rowPin == 16 && columnPin == 7)
-    return &this->keyboardButtons[37]; // ALT
-
+  switch (rowPin) {
+    case 21:
+      switch (columnPin) {
+        case 4:
+          return &this->keyboardButtons[0]; //
+          break;
+        case 5:
+          return &this->keyboardButtons[1]; // TAB
+          break;
+        case 6:
+          return &this->keyboardButtons[2]; // CAPS_LOCK
+          break;
+        case 7:
+          return &this->keyboardButtons[3]; // SHIFT
+          break;
+        case 8:
+          return &this->keyboardButtons[4]; // GUI
+          break;
+      }
+      break;
+    case 20:
+      switch (columnPin) {
+        case 4:
+          return &this->keyboardButtons[5]; // 1
+          break;
+        case 5:
+          return &this->keyboardButtons[6]; // Q
+          break;
+        case 6:
+          return &this->keyboardButtons[7]; // A
+          break;
+        case 7:
+          return &this->keyboardButtons[8]; // Z
+          break;
+        case 8:
+          return &this->keyboardButtons[9]; // F1
+          break;
+      }
+      break;
+    case 19:
+      switch (columnPin) {
+        case 4:
+          return &this->keyboardButtons[10]; // 2
+          break;
+        case 5:
+          return &this->keyboardButtons[11]; // W
+          break;
+        case 6:
+          return &this->keyboardButtons[12]; // S
+          break;
+        case 7:
+          return &this->keyboardButtons[13]; // X
+          break;
+        case 8:
+          return &this->keyboardButtons[14]; // F2
+          break;
+      }
+      break;
+    case 18:
+      switch (columnPin) {
+        case 4:
+          return &this->keyboardButtons[15]; // 3
+          break;
+        case 5:
+          return &this->keyboardButtons[16]; // E
+          break;
+        case 6:
+          return &this->keyboardButtons[17]; // D
+          break;
+        case 7:
+          return &this->keyboardButtons[18]; // C
+          break;
+        case 8:
+          return &this->keyboardButtons[19]; // F3
+          break;
+      }
+      break;
+    case 15:
+      switch (columnPin) {
+        case 4:
+          return &this->keyboardButtons[20]; // 4
+          break;
+        case 5:
+          return &this->keyboardButtons[21]; // R
+          break;
+        case 6:
+          return &this->keyboardButtons[22]; // F
+          break;
+        case 7:
+          return &this->keyboardButtons[23]; // V
+          break;
+        case 8:
+          return &this->keyboardButtons[24]; // F4
+          break;
+      }
+      break;
+    case 14:
+      switch (columnPin) {
+        case 4:
+          return &this->keyboardButtons[25]; // 5
+          break;
+        case 5:
+          return &this->keyboardButtons[26]; // T
+          break;
+        case 6:
+          return &this->keyboardButtons[27]; // G
+          break;
+        case 7:
+          return &this->keyboardButtons[28]; // B
+          break;
+        case 8:
+          return &this->keyboardButtons[32]; // ' '
+          break;
+      }
+      break;
+    case 16:
+      switch (columnPin) {
+        case 4:
+          return &this->keyboardButtons[29]; // ESC
+          break;
+        case 5:
+          return &this->keyboardButtons[30]; // F6
+          break;
+        case 6:
+          return &this->keyboardButtons[31]; // F5
+          break;
+        case 7:
+          return &this->keyboardButtons[37]; // ALT
+          break;
+        case 8:
+          return &this->keyboardButtons[33]; // CTRL
+          break;
+      }
+      break;
+    case 10:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[34]; // FN
+          break;
+        case 7:
+          return &this->keyboardButtons[36];
+          break;
+        case 8:
+          return &this->keyboardButtons[35];
+          break;
+      }
+      break;
+  }
   return &this->noneButton;
 }
 
 KeyboardButton *KeyboardManager::getExtendMapping(int8_t rowPin, int8_t columnPin)
 {
-  // 1
-  if (rowPin == 21 && columnPin == 4)
-    return &this->keyboardButtons[0]; //
-  else if (rowPin == 21 && columnPin == 5)
-    return &this->keyboardButtons[1]; // TAB
-  else if (rowPin == 21 && columnPin == 6)
-    return &this->keyboardButtons[2]; // CAPS_LOCK
-  else if (rowPin == 21 && columnPin == 7)
-    return &this->keyboardButtons[3]; // SHIFT
-  else if (rowPin == 21 && columnPin == 8)
-    return &this->keyboardButtons[4]; // GUI
-
-  // 2
-  if (rowPin == 20 && columnPin == 4)
-    return &this->noneButton;
-  else if (rowPin == 20 && columnPin == 5)
-    return&this->noneButton;
-  else if (rowPin == 20 && columnPin == 6)
-    return &this->noneButton;
-  else if (rowPin == 20 && columnPin == 7)
-    return &this->noneButton;
-  else if (rowPin == 20 && columnPin == 8)
-    return &this->keyboardButtons[43]; // F12
-
-  // 3
-  if (rowPin == 19 && columnPin == 4)
-    return &this->noneButton;
-  else if (rowPin == 19 && columnPin == 5)
-    return &this->keyboardButtons[50];
-  else if (rowPin == 19 && columnPin == 6)
-    return &this->noneButton;
-  else if (rowPin == 19 && columnPin == 7)
-    return &this->noneButton;
-  else if (rowPin == 19 && columnPin == 8)
-    return &this->keyboardButtons[42]; // F11
-
-  // 4
-  if (rowPin == 18 && columnPin == 4)
-    return &this->noneButton;
-  else if (rowPin == 18 && columnPin == 5)
-    return &this->keyboardButtons[52];
-  else if (rowPin == 18 && columnPin == 6)
-    return &this->noneButton;
-  else if (rowPin == 18 && columnPin == 7)
-    return &this->keyboardButtons[46];
-  else if (rowPin == 18 && columnPin == 8)
-    return &this->keyboardButtons[41]; // F10
-
-  // 5
-  if (rowPin == 15 && columnPin == 4)
-    return &this->noneButton;
-  else if (rowPin == 15 && columnPin == 5)
-    return &this->keyboardButtons[51];
-  else if (rowPin == 15 && columnPin == 6)
-    return &this->keyboardButtons[44];
-  else if (rowPin == 15 && columnPin == 7)
-    return &this->keyboardButtons[45];
-  else if (rowPin == 15 && columnPin == 8)
-    return &this->keyboardButtons[40]; // F9
-
-  // 6
-  if (rowPin == 14 && columnPin == 4)
-    return &this->noneButton;
-  else if (rowPin == 14 && columnPin == 5)
-    return &this->keyboardButtons[48]; // BACK
-  else if (rowPin == 14 && columnPin == 6)
-    return &this->keyboardButtons[49]; // RETURN
-  else if (rowPin == 14 && columnPin == 7)
-    return &this->keyboardButtons[47];
-
-  // 7
-  if (rowPin == 16 && columnPin == 4)
-    return &this->noneButton;
-  else if (rowPin == 16 && columnPin == 5)
-    return &this->keyboardButtons[38]; // F7
-  else if (rowPin == 16 && columnPin == 6)
-    return &this->keyboardButtons[39]; // F8
-
-  // 8
-  if (rowPin == 14 && columnPin == 8)
-    return &this->keyboardButtons[32]; // ' '
-  else if (rowPin == 16 && columnPin == 8)
-    return &this->keyboardButtons[33]; // CTRL
-  else if (rowPin == 10 && columnPin == 6)
-    return &this->keyboardButtons[34]; // FN1
-  else if (rowPin == 10 && columnPin == 8)
-    return &this->keyboardButtons[35];
-  else if (rowPin == 10 && columnPin == 7)
-    return &this->keyboardButtons[36];
-  else if (rowPin == 16 && columnPin == 7)
-    return &this->keyboardButtons[37]; // ALT
-
+  switch (rowPin) {
+    case 21:
+      switch (columnPin) {
+        case 4:
+          return &this->keyboardButtons[0]; //
+          break;
+        case 5:
+          return &this->keyboardButtons[1]; // TAB
+          break;
+        case 6:
+          return &this->keyboardButtons[2]; // CAPS_LOCK
+          break;
+        case 7:
+          return &this->keyboardButtons[3]; // SHIFT
+          break;
+        case 8:
+          return &this->keyboardButtons[4]; // GUI
+          break;
+      }
+      break;
+    case 20:
+      switch (columnPin) {
+        case 4:
+          return &this->noneButton;
+          break;
+        case 5:
+          return &this->noneButton;
+          break;
+        case 6:
+          return &this->noneButton;
+          break;
+        case 7:
+          return &this->noneButton;
+          break;
+        case 8:
+          return &this->keyboardButtons[43]; // F12
+          break;
+      }
+      break;
+    case 19:
+      switch (columnPin) {
+        case 4:
+          return &this->noneButton;
+          break;
+        case 5:
+          return &this->keyboardButtons[50];
+          break;
+        case 6:
+          return &this->noneButton;
+          break;
+        case 7:
+          return &this->noneButton;
+          break;
+        case 8:
+          return &this->keyboardButtons[42]; // F11
+          break;
+      }
+      break;
+    case 18:
+      switch (columnPin) {
+        case 4:
+          return &this->noneButton;
+          break;
+        case 5:
+          return &this->keyboardButtons[52];
+          break;
+        case 6:
+          return &this->noneButton;
+          break;
+        case 7:
+          return &this->keyboardButtons[46];
+          break;
+        case 8:
+          return &this->keyboardButtons[41]; // F10
+          break;
+      }
+      break;
+    case 15:
+      switch (columnPin) {
+        case 4:
+          return &this->noneButton;
+          break;
+        case 5:
+          return &this->keyboardButtons[51];
+          break;
+        case 6:
+          return &this->keyboardButtons[44];
+          break;
+        case 7:
+          return &this->keyboardButtons[45];
+          break;
+        case 8:
+          return &this->keyboardButtons[40]; // F9
+          break;
+      }
+      break;
+    case 14:
+      switch (columnPin) {
+        case 4:
+          return &this->noneButton;
+          break;
+        case 5:
+          return &this->keyboardButtons[48]; // BACK
+          break;
+        case 6:
+          return &this->keyboardButtons[49]; // RETURN
+          break;
+        case 7:
+          return &this->keyboardButtons[47];
+          break;
+        case 8:
+          return &this->keyboardButtons[32]; // ' '
+          break;
+      }
+      break;
+    case 16:
+      switch (columnPin) {
+        case 4:
+          return &this->noneButton;
+          break;
+        case 5:
+          return &this->keyboardButtons[38]; // F7
+          break;
+        case 6:
+          return &this->keyboardButtons[39]; // F8
+          break;
+        case 7:
+          return &this->keyboardButtons[37]; // ALT
+          break;
+        case 8:
+          return &this->keyboardButtons[33]; // CTRL
+          break;
+      }
+      break;
+    case 10:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[34]; // FN
+          break;
+        case 7:
+          return &this->keyboardButtons[36];
+          break;
+        case 8:
+          return &this->keyboardButtons[35];
+          break;
+      }
+      break;
+  }
   return &this->noneButton;
 }

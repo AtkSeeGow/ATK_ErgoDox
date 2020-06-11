@@ -23,13 +23,13 @@ KeyboardManager::KeyboardManager(LiquidCrystal_I2C *liquidCrystalI2C)
   this->keyboardButtons[6] = KeyboardButton(bounceTime, 'p', KeyboardType);
   this->keyboardButtons[7] = KeyboardButton(bounceTime, ';', KeyboardType);
   this->keyboardButtons[8] = KeyboardButton(bounceTime, '/', KeyboardType);
-  this->keyboardButtons[9] = KeyboardButton(bounceTime, KEY_PAGE_DOWN, KeyboardType);
+  this->keyboardButtons[9] = KeyboardButton(bounceTime, 70+136, KeyboardType);
 
   this->keyboardButtons[10] = KeyboardButton(bounceTime, '9', KeyboardType);
   this->keyboardButtons[11] = KeyboardButton(bounceTime, 'o', KeyboardType);
   this->keyboardButtons[12] = KeyboardButton(bounceTime, 'l', KeyboardType);
   this->keyboardButtons[13] = KeyboardButton(bounceTime, '.', KeyboardType);
-  this->keyboardButtons[14] = KeyboardButton(bounceTime, KEY_PAGE_UP, KeyboardType);
+  this->keyboardButtons[14] = KeyboardButton(bounceTime, 2, FunctionType);
 
   this->keyboardButtons[15] = KeyboardButton(bounceTime, '8', KeyboardType);
   this->keyboardButtons[16] = KeyboardButton(bounceTime, 'i', KeyboardType);
@@ -50,7 +50,7 @@ KeyboardManager::KeyboardManager(LiquidCrystal_I2C *liquidCrystalI2C)
 
   this->keyboardButtons[29] = KeyboardButton(bounceTime, '\\', KeyboardType);
   this->keyboardButtons[30] = KeyboardButton(bounceTime, 2, FunctionType); // 右手把滑鼠滾動事件
-  this->keyboardButtons[31] = KeyboardButton(bounceTime, 70+136, KeyboardType);
+  this->keyboardButtons[31] = KeyboardButton(bounceTime, KEY_LEFT_CTRL, KeyboardType);
 
   this->keyboardButtons[32] = KeyboardButton();
 }

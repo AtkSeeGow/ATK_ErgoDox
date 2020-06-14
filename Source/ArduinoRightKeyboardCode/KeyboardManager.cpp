@@ -23,7 +23,7 @@ KeyboardManager::KeyboardManager(LiquidCrystal_I2C *liquidCrystalI2C)
   this->keyboardButtons[6] = KeyboardButton(bounceTime, 'p', KeyboardType);
   this->keyboardButtons[7] = KeyboardButton(bounceTime, ';', KeyboardType);
   this->keyboardButtons[8] = KeyboardButton(bounceTime, '/', KeyboardType);
-  this->keyboardButtons[9] = KeyboardButton(bounceTime, 70+136, KeyboardType);
+  this->keyboardButtons[9] = KeyboardButton(bounceTime, 70 + 136, KeyboardType);
 
   this->keyboardButtons[10] = KeyboardButton(bounceTime, '9', KeyboardType);
   this->keyboardButtons[11] = KeyboardButton(bounceTime, 'o', KeyboardType);
@@ -102,83 +102,132 @@ void KeyboardManager::DisplayMappingModeName() {
 
 KeyboardButton *KeyboardManager::getBasicMapping(int8_t rowPin, int8_t columnPin)
 {
-  // 1
-  if (rowPin == 21 && columnPin == 6)
-    return &this->keyboardButtons[0]; // -
-  else if (rowPin == 21 && columnPin == 5)
-    return &this->keyboardButtons[1]; // =
-  else if (rowPin == 21 && columnPin == 8)
-    return &this->keyboardButtons[2]; // [
-  else if (rowPin == 21 && columnPin == 7)
-    return &this->keyboardButtons[3]; // ]
-  else if (rowPin == 21 && columnPin == 9)
-    return &this->keyboardButtons[4]; // \
-
-  // 2
-  if (rowPin == 20 && columnPin == 6)
-    return &this->keyboardButtons[5]; // 0
-  else if (rowPin == 20 && columnPin == 5)
-    return &this->keyboardButtons[6]; // P
-  else if (rowPin == 20 && columnPin == 8)
-    return &this->keyboardButtons[7]; // ;
-  else if (rowPin == 20 && columnPin == 7)
-    return &this->keyboardButtons[8]; // /
-  else if (rowPin == 20 && columnPin == 9)
-    return &this->keyboardButtons[9]; // F12
-
-  // 3
-  if (rowPin == 19 && columnPin == 6)
-    return &this->keyboardButtons[10]; // 9
-  else if (rowPin == 19 && columnPin == 5)
-    return &this->keyboardButtons[11]; // O
-  else if (rowPin == 19 && columnPin == 8)
-    return &this->keyboardButtons[12]; // L
-  else if (rowPin == 19 && columnPin == 7)
-    return &this->keyboardButtons[13]; // .
-  else if (rowPin == 19 && columnPin == 9)
-    return &this->keyboardButtons[14]; // F11
-
-  // 4
-  if (rowPin == 16 && columnPin == 6)
-    return &this->keyboardButtons[15]; // 8
-  else if (rowPin == 16 && columnPin == 5)
-    return &this->keyboardButtons[16]; // I
-  else if (rowPin == 16 && columnPin == 8)
-    return &this->keyboardButtons[17]; // K
-  else if (rowPin == 16 && columnPin == 7)
-    return &this->keyboardButtons[18]; // ,
-  else if (rowPin == 16 && columnPin == 9)
-    return &this->keyboardButtons[19]; // F10
-
-  // 5
-  if (rowPin == 10 && columnPin == 6)
-    return &this->keyboardButtons[20]; // 7
-  else if (rowPin == 10 && columnPin == 5)
-    return &this->keyboardButtons[21]; // U
-  else if (rowPin == 10 && columnPin == 8)
-    return &this->keyboardButtons[22]; // J
-  else if (rowPin == 10 && columnPin == 7)
-    return &this->keyboardButtons[23]; // M
-  else if (rowPin == 10 && columnPin == 9)
-    return &this->keyboardButtons[24]; // F9
-
-  // 6
-  if (rowPin == 14 && columnPin == 6)
-    return &this->keyboardButtons[25]; // 6
-  else if (rowPin == 14 && columnPin == 5)
-    return &this->keyboardButtons[26]; // Y
-  else if (rowPin == 14 && columnPin == 8)
-    return &this->keyboardButtons[27]; // H
-  else if (rowPin == 14 && columnPin == 7)
-    return &this->keyboardButtons[28]; // N
-
-  // 7
-  if (rowPin == 15 && columnPin == 6)
-    return &this->keyboardButtons[29]; //
-  else if (rowPin == 15 && columnPin == 5)
-    return &this->keyboardButtons[30]; // 滑鼠滾輪滾動
-  else if (rowPin == 15 && columnPin == 8)
-    return &this->keyboardButtons[31]; // F7
+  switch (rowPin) {
+    case 21:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[0]; // -
+          break;
+        case 5:
+          return &this->keyboardButtons[1]; // =
+          break;
+        case 8:
+          return &this->keyboardButtons[2]; // [
+          break;
+        case 7:
+          return &this->keyboardButtons[3]; // ]
+          break;
+        case 9:
+          return &this->keyboardButtons[4]; // \
+          break;
+      }
+      break;
+    case 20:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[5]; // 0
+          break;
+        case 5:
+          return &this->keyboardButtons[6]; // P
+          break;
+        case 8:
+          return &this->keyboardButtons[7]; // ;
+          break;
+        case 7:
+          return &this->keyboardButtons[8]; // /
+          break;
+        case 9:
+          return &this->keyboardButtons[9]; // Print
+          break;
+      }
+      break;
+    case 19:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[10]; // 9
+          break;
+        case 5:
+          return &this->keyboardButtons[11]; // O
+          break;
+        case 8:
+          return &this->keyboardButtons[12]; // L
+          break;
+        case 7:
+          return &this->keyboardButtons[13]; // .
+          break;
+        case 9:
+          return &this->keyboardButtons[14]; // F11
+          break;
+      }
+      break;
+    case 16:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[15]; // 8
+          break;
+        case 5:
+          return &this->keyboardButtons[16]; // I
+          break;
+        case 8:
+          return &this->keyboardButtons[17]; // K
+          break;
+        case 7:
+          return &this->keyboardButtons[18]; // ,
+          break;
+        case 9:
+          return &this->keyboardButtons[19]; // F10
+          break;
+      }
+      break;
+    case 10:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[20]; // 7
+          break;
+        case 5:
+          return &this->keyboardButtons[21]; // U
+          break;
+        case 8:
+          return &this->keyboardButtons[22]; // J
+          break;
+        case 7:
+          return &this->keyboardButtons[23]; // M
+          break;
+        case 9:
+          return &this->keyboardButtons[24]; // F9
+          break;
+      }
+      break;
+    case 14:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[25]; // 6
+          break;
+        case 5:
+          return &this->keyboardButtons[26]; // Y
+          break;
+        case 8:
+          return &this->keyboardButtons[27]; // H
+          break;
+        case 7:
+          return &this->keyboardButtons[28]; // N
+          break;
+      }
+      break;
+    case 15:
+      switch (columnPin) {
+        case 6:
+          return &this->keyboardButtons[29]; //
+          break;
+        case 5:
+          return &this->keyboardButtons[30]; // 滑鼠滾輪滾動
+          break;
+        case 8:
+          return &this->keyboardButtons[31]; // F7
+          break;
+      }
+      break;
+  }
 
   return &this->keyboardButtons[32];
 }

@@ -7,11 +7,9 @@
 #include "KeyboardButton.h"
 #include "KeyboardManager.h"
 
-KeyboardManager::KeyboardManager(LiquidCrystal_I2C *liquidCrystalI2C)
+KeyboardManager::KeyboardManager(MouseManager *mouseManager)
 {
   int8_t bounceTime = 1;
-
-  this->liquidCrystalI2C = liquidCrystalI2C;
 
   this->keyboardButtons[0] = KeyboardButton(bounceTime, '-', KeyboardType);
   this->keyboardButtons[1] = KeyboardButton(bounceTime, '=', KeyboardType);
@@ -23,13 +21,13 @@ KeyboardManager::KeyboardManager(LiquidCrystal_I2C *liquidCrystalI2C)
   this->keyboardButtons[6] = KeyboardButton(bounceTime, 'p', KeyboardType);
   this->keyboardButtons[7] = KeyboardButton(bounceTime, ';', KeyboardType);
   this->keyboardButtons[8] = KeyboardButton(bounceTime, '/', KeyboardType);
-  this->keyboardButtons[9] = KeyboardButton(bounceTime, 70 + 136, KeyboardType);
+  this->keyboardButtons[9] = KeyboardButton(bounceTime, KEY_PAGE_DOWN, KeyboardType);
 
   this->keyboardButtons[10] = KeyboardButton(bounceTime, '9', KeyboardType);
   this->keyboardButtons[11] = KeyboardButton(bounceTime, 'o', KeyboardType);
   this->keyboardButtons[12] = KeyboardButton(bounceTime, 'l', KeyboardType);
   this->keyboardButtons[13] = KeyboardButton(bounceTime, '.', KeyboardType);
-  this->keyboardButtons[14] = KeyboardButton(bounceTime, 2, FunctionType);
+  this->keyboardButtons[14] = KeyboardButton(bounceTime, KEY_PAGE_UP, KeyboardType);
 
   this->keyboardButtons[15] = KeyboardButton(bounceTime, '8', KeyboardType);
   this->keyboardButtons[16] = KeyboardButton(bounceTime, 'i', KeyboardType);
@@ -49,14 +47,23 @@ KeyboardManager::KeyboardManager(LiquidCrystal_I2C *liquidCrystalI2C)
   this->keyboardButtons[28] = KeyboardButton(bounceTime, 'n', KeyboardType);
 
   this->keyboardButtons[29] = KeyboardButton(bounceTime, '\\', KeyboardType);
-  this->keyboardButtons[30] = KeyboardButton(bounceTime, 2, FunctionType); // 右手把滑鼠滾動事件
-  this->keyboardButtons[31] = KeyboardButton(bounceTime, KEY_LEFT_CTRL, KeyboardType);
+  this->keyboardButtons[30] = KeyboardButton(bounceTime, 70 + 136, KeyboardType);
+  this->keyboardButtons[31] = KeyboardButton(bounceTime, 2, FunctionType); // 滑鼠滾輪
 
-  this->keyboardButtons[32] = KeyboardButton();
-}
+  this->keyboardButtons[32] = KeyboardButton(bounceTime, 3, FunctionType); // 滑鼠上
+  this->keyboardButtons[33] = KeyboardButton();
+  this->keyboardButtons[34] = KeyboardButton();
+  this->keyboardButtons[35] = KeyboardButton(bounceTime, 6, FunctionType); // 滑鼠下
+  this->keyboardButtons[36] = KeyboardButton(bounceTime, 7, FunctionType); // 滑鼠左
+  this->keyboardButtons[37] = KeyboardButton(bounceTime, 8, FunctionType); // 滑鼠右
 
-KeyboardButton *KeyboardManager::GetMiddleScrollButton() {
-  return &this->keyboardButtons[30];
+  this->keyboardButtons[38] = KeyboardButton();
+
+  mouseManager->MouseButtons[0] = &this->keyboardButtons[32];
+  mouseManager->MouseButtons[1] = &this->keyboardButtons[35];
+  mouseManager->MouseButtons[2] = &this->keyboardButtons[36];
+  mouseManager->MouseButtons[3] = &this->keyboardButtons[37];
+  mouseManager->MouseButtons[4] = &this->keyboardButtons[31];
 }
 
 void KeyboardManager::OperationState(int8_t rowPin, int8_t columnPin, bool currentState)
@@ -78,7 +85,7 @@ void KeyboardManager::OperationState(int8_t rowPin, int8_t columnPin, bool curre
 
 void KeyboardManager::Execution()
 {
-  for (int8_t i = 0; i < 32; i++)
+  for (int8_t i = 0; i < 40; i++)
   {
     KeyboardButton keyboardButton = this->keyboardButtons[i];
     keyboardButton.OperationPress();
@@ -93,11 +100,6 @@ KeyboardButton *KeyboardManager::GetMapping(int8_t rowPin, int8_t columnPin)
 }
 
 void KeyboardManager::DisplayMappingModeName() {
-  this->liquidCrystalI2C->clear();
-  this->liquidCrystalI2C->setCursor(0, 0);
-  this->liquidCrystalI2C->print("Mapping Mode :");
-  this->liquidCrystalI2C->setCursor(0, 1);
-  this->liquidCrystalI2C->print(" Basic Keyboard");
 }
 
 KeyboardButton *KeyboardManager::getBasicMapping(int8_t rowPin, int8_t columnPin)
@@ -160,7 +162,7 @@ KeyboardButton *KeyboardManager::getBasicMapping(int8_t rowPin, int8_t columnPin
           break;
       }
       break;
-    case 16:
+    case 18:
       switch (columnPin) {
         case 6:
           return &this->keyboardButtons[15]; // 8
@@ -198,7 +200,7 @@ KeyboardButton *KeyboardManager::getBasicMapping(int8_t rowPin, int8_t columnPin
           break;
       }
       break;
-    case 14:
+    case 16:
       switch (columnPin) {
         case 6:
           return &this->keyboardButtons[25]; // 6
@@ -212,22 +214,46 @@ KeyboardButton *KeyboardManager::getBasicMapping(int8_t rowPin, int8_t columnPin
         case 7:
           return &this->keyboardButtons[28]; // N
           break;
+          
+        case 9:
+          return &this->keyboardButtons[37]; // N
+          break;
       }
       break;
-    case 15:
+    case 14:
       switch (columnPin) {
         case 6:
           return &this->keyboardButtons[29]; //
           break;
         case 5:
-          return &this->keyboardButtons[30]; // 滑鼠滾輪滾動
+          return &this->keyboardButtons[30]; //
           break;
         case 8:
-          return &this->keyboardButtons[31]; // F7
+          return &this->keyboardButtons[31]; //
+          break;
+
+        case 7:
+          return &this->keyboardButtons[32]; //
+          break;
+        case 9:
+          return &this->keyboardButtons[36]; //
+          break;
+      }
+      break;
+     case 15:
+      switch (columnPin) {
+        case 7:
+          return &this->keyboardButtons[33]; //
+          break;
+        case 9:
+          return &this->keyboardButtons[34]; //
+          break;
+        case 8:
+          return &this->keyboardButtons[35]; //
           break;
       }
       break;
   }
 
-  return &this->keyboardButtons[32];
+  return &this->keyboardButtons[38];
 }

@@ -27,8 +27,26 @@ void setup()
   liquidCrystalI2C.begin(16, 2);
 }
 
+String message = "";
 void loop()
 {
+  if (Serial.available() > 0) {
+    char c = Serial.read();
+    if (c != '\n') {
+      message += c;
+    }
+    else
+    {
+      int commaPosition = message.indexOf(',');
+      liquidCrystalI2C.clear();
+      liquidCrystalI2C.setCursor(0, 0);
+      liquidCrystalI2C.print(message.substring(0, commaPosition));
+      liquidCrystalI2C.setCursor(0, 1);
+      liquidCrystalI2C.print(message.substring(commaPosition + 1, message.length()));
+      message = "";
+    }
+  }
+  
   for (int8_t rowPin : rowPins)
   {
     digitalWrite(rowPin, LOW);

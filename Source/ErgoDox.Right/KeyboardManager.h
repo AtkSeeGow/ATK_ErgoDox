@@ -10,25 +10,21 @@
 #endif
 
 #include "KeyboardButton.h"
-
-#include <LiquidCrystal_I2C.h>
+#include "MouseManager.h"
 
 class KeyboardManager {
   public:
-    KeyboardManager(LiquidCrystal_I2C *liquidCrystalI2C);
+    KeyboardManager(MouseManager *mouseManager);
 
     void OperationState(int8_t rowPin, int8_t columnPin, bool currentState);
     void Execution();
     void DisplayMappingModeName();
 
     KeyboardButton *GetMapping(int8_t rowPin, int8_t columnPin);
-    KeyboardButton *GetMiddleScrollButton();
   private:
-    LiquidCrystal_I2C *liquidCrystalI2C;
-
     KeyboardButton *getBasicMapping(int8_t rowPin, int8_t columnPin);
     
-    KeyboardButton keyboardButtons[33];
+    KeyboardButton keyboardButtons[40];
 };
 
 #endif

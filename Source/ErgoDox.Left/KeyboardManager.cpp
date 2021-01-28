@@ -125,19 +125,7 @@ KeyboardButton *KeyboardManager::GetMapping(int8_t rowPin, int8_t columnPin)
 }
 
 void KeyboardManager::DisplayMappingModeName() {
-  this->liquidCrystalI2C->clear();
-  if (this->keyboardButtons[34].CurrentState == LOW) {
-    this->liquidCrystalI2C->setCursor(0, 0);
-    this->liquidCrystalI2C->print("Mapping Mode :");
-    this->liquidCrystalI2C->setCursor(0, 1);
-    this->liquidCrystalI2C->print(" Extend Keyboard");
-  }
-  else {
-    this->liquidCrystalI2C->setCursor(0, 0);
-    this->liquidCrystalI2C->print("Mapping Mode :");
-    this->liquidCrystalI2C->setCursor(0, 1);
-    this->liquidCrystalI2C->print(" Basic Keyboard");
-  }
+  
 }
 
 KeyboardButton *KeyboardManager::getBasicMapping(int8_t rowPin, int8_t columnPin)
